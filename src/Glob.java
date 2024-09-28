@@ -20,6 +20,20 @@ public class Glob {
         }
     }
 
+    public static boolean inputBoolean(String prompt) {
+        System.out.print(prompt + " (y/n) ");
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equals("y")) {
+                return true;
+            } else if (input.equals("n")) {
+                return false;
+            } else {
+                System.out.println("Please enter 'y' or 'n'.");
+            }
+        }
+    }
+
     public static void printWithWidth(String s, int width, boolean b) {
         int sWidth = s.length();
 
