@@ -19,4 +19,20 @@ public class Glob {
             }
         }
     }
+
+    public static void printWithWidth(String s, int width, boolean b) {
+        int sWidth = s.length();
+
+        System.out.print(s);
+
+        if (sWidth >= width) {
+            if (b) System.out.println();
+            return;
+        }
+
+        for (int i = 0; i < width-sWidth; i++) {
+            System.out.print(" ");
+        }
+        if (b) System.out.println();
+    }
 }

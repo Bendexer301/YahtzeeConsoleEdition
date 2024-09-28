@@ -19,18 +19,21 @@ public class Scoreboard {
     }
 
     public void printScoreboard(Player[] players) {
-        System.out.print("Category\t\t\t");
+        // header
+        Glob.printWithWidth("Category", 17, false);
         for (int i = 0; i < players.length; i++) {
-            System.out.print(players[i].getName() + "\t");
+            Glob.printWithWidth(players[i].getName(), 8, false);
         }
         System.out.println();
+
+        // scores
         for (int i = 0; i < 13; i++) {
-            System.out.print(Category.values()[i] + "\t");
+            Glob.printWithWidth(String.valueOf(Category.values()[i]), 17, false);
             for (int j = 0; j < players.length; j++) {
                 if (scores[i][j] == -1) {
-                    System.out.print("X\t");
+                    Glob.printWithWidth("_", 8, false);
                 } else {
-                    System.out.print(scores[i][j] + "\t");
+                    Glob.printWithWidth(String.valueOf(scores[i][j]), 8, false);
                 }
             }
             System.out.println();
