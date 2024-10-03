@@ -37,6 +37,7 @@ public class GameMaster {
             }
             scoreboard.printScoreboard(-1, players);
         }
+        scoreboard.printWinner(players);
     }
 
     private void manageDice() {
@@ -51,6 +52,10 @@ public class GameMaster {
             while (true) {
                 String input = Glob.inputString("");
                 boolean valid = true;
+
+                if (input.length() != 5) {
+                    valid = false;
+                }
 
                 for (int l = 0; l < 5; l++) {
                     if (input.charAt(l) != 'k' && input.charAt(l) != 'r') {

@@ -199,6 +199,50 @@ public class Scoreboard {
         return score;
     }
 
+    public void printWinner(Player[] players) {
+        int[] totals = new int[players.length];
+
+        // upper section
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < players.length; j++) {
+                if (scores[i][j] != -1 && scores[i][j] != -2) {
+                    totals[j] += scores[i][j];
+                }
+            }
+        }
+
+        // upper bonus
+        for (int i = 0; i < players.length; i++) {
+            if (totals[i] >= 63) {
+                totals[i] += 35;
+            }
+        }
+
+        // lower section
+        for (int i = 6; i < 13; i++) {
+            for (int j = 0; j < players.length; j++) {
+                if (scores[i][j] != -1 && scores[i][j] != -2) {
+                    totals[j] += scores[i][j];
+                }
+            }
+        }
+
+        // calculate winner
+        int max = 0;
+        for (int i = 0; i < players.length; i++) {
+            if (totals[i] > max) {
+                max = totals[i];
+            }
+        }
+
+        // print winner
+        for (int i = 0; i < players.length; i++) {
+            if (totals[i] == max) {
+                System.out.println(players[i].getName() + " wins with a score of " + max + "!");
+            }
+        }
+    }
+
     public void setScore(int index, int playerIndex, int score) {
         if (score == 0) {
             scores[index][playerIndex] = -2;
