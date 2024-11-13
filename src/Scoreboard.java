@@ -1,3 +1,6 @@
+/**
+ * Scoreboard class that keeps track of the scores of each player.
+ */
 public class Scoreboard {
 
     public enum Category {
@@ -6,6 +9,10 @@ public class Scoreboard {
 
     private int[][] scores = new int[13][];
 
+    /**
+     * Constructor for the Scoreboard class.
+     * @param numPlayers
+     */
     public Scoreboard(int numPlayers) {
         for (int i = 0; i < 13; i++) {
             scores[i] = new int[numPlayers];
@@ -18,6 +25,11 @@ public class Scoreboard {
         }
     }
 
+    /**
+     * Prints the scoreboard.
+     * @param index
+     * @param players
+     */
     public void printScoreboard(int index, Player[] players) {
         // header
         Glob.printWithWidth("Index", 6, false);
@@ -48,6 +60,12 @@ public class Scoreboard {
 
     }
 
+    /**
+     * Changes the scoreboard based on user input.
+     * @param index
+     * @param dice
+     * @return
+     */
     public int calculateScore(int index, int[] dice) {
         int score = 0;
         int[] counts;
@@ -199,6 +217,10 @@ public class Scoreboard {
         return score;
     }
 
+    /**
+     * Prints the winner of the game.
+     * @param players
+     */
     public void printWinner(Player[] players) {
         int[] totals = new int[players.length];
 
@@ -243,6 +265,10 @@ public class Scoreboard {
         }
     }
 
+    /**
+     * Changes the scoreboard based on user input.
+     * @param playerIndex
+     */
     public void setScore(int index, int playerIndex, int score) {
         if (score == 0) {
             scores[index][playerIndex] = -2;
@@ -251,6 +277,12 @@ public class Scoreboard {
         scores[index][playerIndex] = score;
     }
 
+    /**
+     * Gets the score of a player in a category.
+     * @param index
+     * @param playerIndex
+     * @return
+     */
     public int getScore(int index, int playerIndex) {
         return scores[index][playerIndex];
     }

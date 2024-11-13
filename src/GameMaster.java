@@ -1,9 +1,15 @@
+/**
+ * The GameMaster class is responsible for managing the game.
+ */
 public class GameMaster {
 
     private Dice[] dice = new Dice[5];
     private Player[] players;
     private Scoreboard scoreboard;
 
+    /**
+     * Constructor for the GameMaster class.
+     */
     public GameMaster() {
         // create the dice
         for (int i = 0; i < 5; i++) {
@@ -26,7 +32,6 @@ public class GameMaster {
                 System.out.println();
                 System.out.print(players[j].getName() + "'s turn. Press enter to roll the dice.");
                 Glob.inputString("");
-                System.out.println("-:-:-.-._.-:_._.-:-:_. =" + j);
 
                 for (int l = 0; l < 5; l++) {
                     dice[l].roll();
@@ -40,6 +45,9 @@ public class GameMaster {
         scoreboard.printWinner(players);
     }
 
+    /**
+     * Manages the dice rolling process.
+     */
     private void manageDice() {
         for (int k = 0; k < 2; k++) {
 
@@ -84,6 +92,10 @@ public class GameMaster {
         System.out.println();
     }
 
+    /**
+     * Changes the scoreboard for the player.
+     * @param playerIndex
+     */
     private void changeScoreboard(int playerIndex) {
         System.out.println("Scoreboard:" + playerIndex);
         scoreboard.printScoreboard(playerIndex, players);
